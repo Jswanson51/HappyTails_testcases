@@ -28,10 +28,22 @@ public class NavigateFromSearchResultsToInsertPage {
   @Test
   public void testNavigateFromSearchResultsToInsertPage() throws Exception {
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/HomePage");
+
+    Thread.sleep(200);
+    
+    
     driver.findElement(By.linkText("Search Pets")).click();
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/simpleSearchHB.html");
+
+    Thread.sleep(200);
+    
+    
     driver.findElement(By.xpath("//input[@value='Search']")).click();
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/SimpleSearchHB");
+
+    Thread.sleep(200);
+    
+    
     driver.findElement(By.linkText("Insert Pets")).click();
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/simpleInsertHB.html");
   }

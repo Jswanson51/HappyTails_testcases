@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import java.io.File;
 
-public class ReturnToSearchPetsFromInsertPage {
+public class DeleteAPet {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -18,7 +18,7 @@ public class ReturnToSearchPetsFromInsertPage {
   JavascriptExecutor js;
   @Before
   public void setUp() throws Exception {
-	    System.setProperty("webdriver.chrome.driver", "lib\\win\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver", "lib\\win\\chromedriver.exe");
 	    driver = new ChromeDriver();
 	    baseUrl = "https://www.google.com/";
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -26,31 +26,26 @@ public class ReturnToSearchPetsFromInsertPage {
 	  }
 
   @Test
-  public void testReturnToSearchPetsFromInsertPage() throws Exception {
+  public void testDeleteAPet() throws Exception {
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/HomePage");
-    driver.findElement(By.linkText("Insert Pets")).click();
-    driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/simpleInsertHB.html");
-    driver.findElement(By.name("name")).click();
-    driver.findElement(By.name("name")).clear();
-    driver.findElement(By.name("name")).sendKeys("Peach");
-    driver.findElement(By.name("age")).click();
-    driver.findElement(By.name("age")).clear();
-    driver.findElement(By.name("age")).sendKeys("5");
-    driver.findElement(By.name("species")).click();
-    driver.findElement(By.name("species")).clear();
-    driver.findElement(By.name("species")).sendKeys("Bird");
-    driver.findElement(By.name("breed")).click();
-    driver.findElement(By.name("breed")).clear();
-    driver.findElement(By.name("breed")).sendKeys("Parakeet");
-    driver.findElement(By.name("temperament")).click();
-    new Select(driver.findElement(By.name("temperament"))).selectByVisibleText("Playful");
-    driver.findElement(By.name("weight")).click();
-    driver.findElement(By.name("weight")).clear();
-    driver.findElement(By.name("weight")).sendKeys("3oz");
-    driver.findElement(By.xpath("//input[@value='Submit']")).click();
-    driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/SimpleInsertHB");
-    driver.findElement(By.linkText("Search Pets")).click();
-    driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/simpleSearchHB.html");
+    driver.findElement(By.linkText("Adoption Form")).click();
+    driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/adoptionForm.html");
+
+    Thread.sleep(200);
+    
+    
+    driver.findElement(By.name("petId")).click();
+    driver.findElement(By.name("petId")).clear();
+    driver.findElement(By.name("petId")).sendKeys("14");
+    driver.findElement(By.name("adoptionPurpose")).click();
+    driver.findElement(By.name("adoptionPurpose")).clear();
+    driver.findElement(By.name("adoptionPurpose")).sendKeys("Pet delete.");
+
+    Thread.sleep(200);
+    
+    
+    driver.findElement(By.xpath("//input[@value='Adopt']")).click();
+    driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/AdoptionFormHB");
   }
 
   @After

@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import java.io.File;
 
-public class AllPetSearch {
+public class NavigateFromSearchResultsToAdoptionForm {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -18,7 +18,7 @@ public class AllPetSearch {
   JavascriptExecutor js;
   @Before
   public void setUp() throws Exception {
-	    System.setProperty("webdriver.chrome.driver", "lib\\win\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver", "lib\\win\\chromedriver.exe");
 	    driver = new ChromeDriver();
 	    baseUrl = "https://www.google.com/";
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -26,20 +26,17 @@ public class AllPetSearch {
 	  }
 
   @Test
-  public void testAllPetSearch() throws Exception {
+  public void testNavigateFromSearchResultsToAdoptionForm() throws Exception {
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/HomePage");
-
-    Thread.sleep(200);
-    
-    
     driver.findElement(By.linkText("Search Pets")).click();
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/simpleSearchHB.html");
-
-    Thread.sleep(200);
-    
-    
+    driver.findElement(By.name("keyword")).click();
+    driver.findElement(By.name("keyword")).clear();
+    driver.findElement(By.name("keyword")).sendKeys("Tom");
     driver.findElement(By.xpath("//input[@value='Search']")).click();
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/SimpleSearchHB");
+    driver.findElement(By.linkText("Adoption Form")).click();
+    driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/adoptionForm.html");
   }
 
   @After

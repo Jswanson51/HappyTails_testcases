@@ -27,7 +27,6 @@ public class InsertAPet {
 
   @Test
   public void testInsertAPet() throws Exception {
-    driver.get(baseUrl + "chrome://newtab/");
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/HomePage");
     driver.findElement(By.linkText("Insert Pets")).click();
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/simpleInsertHB.html");

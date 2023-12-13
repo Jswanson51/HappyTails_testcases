@@ -18,12 +18,12 @@ public class SearchForAPetByKeyword {
   JavascriptExecutor js;
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "lib\\win\\chromedriver.exe");
-    driver = new ChromeDriver();
-    baseUrl = "https://www.google.com/";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    js = (JavascriptExecutor) driver;
-  }
+	  	System.setProperty("webdriver.chrome.driver", "lib\\win\\chromedriver.exe");
+	    driver = new ChromeDriver();
+	    baseUrl = "https://www.google.com/";
+	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	    js = (JavascriptExecutor) driver;
+	  }
 
   @Test
   public void testSearchForAPetByKeyword() throws Exception {
@@ -32,7 +32,7 @@ public class SearchForAPetByKeyword {
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/simpleSearchHB.html");
     driver.findElement(By.name("keyword")).click();
     driver.findElement(By.name("keyword")).clear();
-    driver.findElement(By.name("keyword")).sendKeys("Cat");
+    driver.findElement(By.name("keyword")).sendKeys("Tom");
     driver.findElement(By.xpath("//input[@value='Search']")).click();
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/SimpleSearchHB");
   }

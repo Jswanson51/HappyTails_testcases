@@ -28,6 +28,19 @@ public class ViewAllPetsOnHomePage {
   @Test
   public void testViewAllPetsOnHomePage() throws Exception {
     driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/HomePage");
+    
+    Thread.sleep(200);
+    
+    driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/SimpleSearchHB");
+    
+    String expected = driver.findElement(By.xpath("/html/body/section/ul/table/tbody/tr[9]/td[1]")).getText();
+    
+    driver.get("http://ec2-18-117-111-108.us-east-2.compute.amazonaws.com:8080/webproject-happytails/HomePage");
+    
+    String result = driver.findElement(By.xpath("/html/body/section/div/div[8]/h4/i")).getText();
+    
+    Assert.assertEquals(expected,result);
+    
   }
 
   @After
